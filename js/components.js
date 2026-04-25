@@ -66,6 +66,7 @@ function PostCard(post) {
 // Funcion Spinner 
 
 function Spinner() {
+    
     const container = document.createElement('div');
     container.className = 'loading';
 
@@ -81,3 +82,22 @@ function Spinner() {
     return container;
 }
 
+// Funcion mensaje de error 
+
+function MensajeError(mensaje) {
+
+    const container = document.createElement('div');
+    container.className = 'error';
+
+    const titulo = document.createElement('strong');
+    titulo.textContent = 'Error';
+
+    const texto = document.createElement('p');
+    texto.textContent = mensaje;
+    
+    container.appendChild(titulo);
+    container.appendChild(texto);
+
+    return container;
+
+}
