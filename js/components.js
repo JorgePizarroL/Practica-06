@@ -62,3 +62,22 @@ function PostCard(post) {
 
   return article;
 }
+
+// Funcion Spinner 
+
+function Spinner() {
+    const container = document.createElement('div');
+    container.className = 'loading';
+
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner';
+
+    const texto = document.createElement('p');
+    texto.textContent = 'Cargando post...';
+
+    container.appendChild(spinner);
+    container.appendChild(texto);
+
+    return container;
+}
+
