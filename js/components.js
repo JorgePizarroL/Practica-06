@@ -101,3 +101,18 @@ function MensajeError(mensaje) {
     return container;
 
 }
+
+function MensajeExito(mensaje) {
+
+    const container = document.createElement('div');
+    container.className = 'success';
+
+    const texto = document.createElement('p');
+    texto.textContent = mensaje;
+
+    container.appendChild(texto);
+
+    return container;
+
+}
+
