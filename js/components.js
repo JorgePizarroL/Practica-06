@@ -116,3 +116,20 @@ function MensajeExito(mensaje) {
 
 }
 
+/**
+ * Componente de estado vacío
+ * @returns {HTMLElement} - Elemento div del DOM
+ */
+
+function EstadoVacio() {
+  const container = document.createElement('div');
+  container.className = 'estado-vacio';
+
+  const texto = document.createElement('p');
+  texto.textContent = 'No hay posts para mostrar';
+
+  container.appendChild(texto);
+
+  return container;
+}
+
