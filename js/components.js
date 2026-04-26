@@ -133,3 +133,56 @@ function EstadoVacio() {
   return container;
 }
 
+
+function mostrarCargando(contenedor) {
+  contenedor.innerHTML = '';
+  contenedor.appendChild(Spinner());
+}
+
+/**
+ * Limpiar contenedor y renderizar lista de posts
+ * @param {array} posts - Array de posts a renderizar
+ * @param {HTMLElement} contenedor - Elemento DOM donde renderizar
+ */
+function renderizarPosts(posts, contenedor) {
+  // Limpiar contenedor
+  contenedor.innerHTML = '';
+
+  if (posts.length === 0) {
+    contenedor.appendChild(EstadoVacio());
+    return;
+  }
+
+  // Crear y agregar cada post
+  posts.forEach(post => {
+    const postElement = PostCard(post);
+    contenedor.appendChild(postElement);
+  });
+}
+
+/**
+ * Mostrar spinner de carga
+ * @param {HTMLElement} contenedor - Elemento DOM donde mostrar spinner
+ */
+function mostrarCargando(contenedor) {
+  contenedor.innerHTML = '';
+  contenedor.appendChild(Spinner());
+}
+
+/**
+ * Mostrar mensaje temporal
+ * @param {HTMLElement} contenedor - Elemento donde mostrar el mensaje
+ * @param {HTMLElement} elemento - Elemento del mensaje (MensajeError o MensajeExito)
+ * @param {number} duracion - Duración en ms (0 = no auto-ocultar)
+ */
+function mostrarMensajeTemporal(contenedor, elemento, duracion = 3000) {
+  contenedor.innerHTML = '';
+  contenedor.appendChild(elemento);
+  contenedor.classList.remove('oculto');
+
+  if (duracion > 0) {
+    setTimeout(() => {
+      contenedor.classList.add('oculto');
+    }, duracion);
+  }
+}
