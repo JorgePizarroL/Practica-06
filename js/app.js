@@ -78,3 +78,39 @@ async function guardarPost(datosPost) {
     btnSubmit.textContent = modoEdicion ? 'Actualizar Post' : 'Crear Post';
   }
 }
+
+/**
+ * Actualizar el contador de posts
+ */
+function actualizarContador() {
+  contador.textContent = postsFiltrados.length;
+}
+
+/**
+ * Limpiar el formulario y resetear estado
+ */
+function limpiarFormulario() {
+  formPost.reset();
+  inputPostId.value = '';
+  modoEdicion = false;
+  btnSubmit.textContent = 'Crear Post';
+  btnCancelar.style.display = 'none';
+}
+
+/**
+ * Cambiar a modo edición
+ * @param {object} post - Post a editar
+ */
+function activarModoEdicion(post) {
+  modoEdicion = true;
+  inputPostId.value = post.id;
+  inputTitulo.value = post.title;
+  inputContenido.value = post.body;
+  btnSubmit.textContent = 'Actualizar Post';
+  btnCancelar.style.display = 'inline-block';
+  
+  // Scroll al formulario
+  formPost.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  inputTitulo.focus();
+}
+
