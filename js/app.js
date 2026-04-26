@@ -176,3 +176,65 @@ function activarModoEdicion(post) {
   formPost.scrollIntoView({ behavior: 'smooth', block: 'start' });
   inputTitulo.focus();
 }
+
+/**
+ * Crear o actualizar un post
+ * @param {object} datosPost - Datos del post
+ */
+async function guardarPost(datosPost) {
+  try {
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = modoEdicion ? 'Actualizando...' : 'Creando...';
+
+    let resultado;
+
+    if (modoEdicion) {
+      // TODO 7.1.1: Obtener el ID del input oculto y convertirlo a número
+      //   const id = parseInt(inputPostId.value);
+
+      // TODO 7.1.2: Llamar a ApiService.updatePost(id, datosPost) y guardar en resultado
+      //   resultado = await ApiService.updatePost(id, datosPost);
+      
+      // Actualizar en el array local
+      const index = posts.findIndex(p => p.id === id);
+      if (index !== -1) {
+        posts[index] = { ...resultado, id };
+      }
+
+      mostrarMensajeTemporal(
+        mensajeEstado,
+        MensajeExito(`Post #${id} actualizado correctamente`),
+        3000
+      );
+
+    } else {
+      // TODO 7.1.3: Llamar a ApiService.createPost(datosPost) y guardar en resultado
+      //   resultado = await ApiService.createPost(datosPost);
+      
+      // TODO 7.1.4: Agregar el resultado al INICIO del array posts usando unshift()
+      //   posts.unshift(resultado);
+
+      mostrarMensajeTemporal(
+        mensajeEstado,
+        MensajeExito(`Post #${resultado.id} creado correctamente`),
+        3000
+      );
+    }
+
+    // Re-renderizar
+    postsFiltrados = [...posts];
+    renderizarPosts(postsFiltrados, listaPosts);
+    actualizarContador();
+    limpiarFormulario();
+
+  } catch (error) {
+    mostrarMensajeTemporal(
+      mensajeEstado,
+      MensajeError(`Error al guardar: ${error.message}`),
+      5000
+    );
+  } finally {
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = modoEdicion ? 'Actualizar Post' : 'Crear Post';
+  }
+}
