@@ -274,3 +274,34 @@ async function eliminarPost(id) {
   }
 }
 
+/**
+ * Buscar posts por título o contenido
+ * @param {string} termino - Término de búsqueda
+ */
+
+function buscarPosts(termino) {
+  const terminoLower = termino.toLowerCase().trim();
+
+  if (terminoLower === '') {
+    postsFiltrados = [...posts];
+  } else {
+    postsFiltrados = posts.filter(post => {
+      const tituloMatch = post.title.toLowerCase().includes(terminoLower);
+      const bodyMatch = post.body.toLowerCase().includes(terminoLower);
+      return tituloMatch || bodyMatch;
+    });
+  }
+
+  renderizarPosts(postsFiltrados, listaPosts);
+  actualizarContador();
+}
+
+/**
+ * Limpiar búsqueda
+ */
+function limpiarBusqueda() {
+  inputBuscar.value = '';
+  postsFiltrados = [...posts];
+  renderizarPosts(postsFiltrados, listaPosts);
+  actualizarContador();
+}
