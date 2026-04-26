@@ -114,3 +114,37 @@ function activarModoEdicion(post) {
   inputTitulo.focus();
 }
 
+/* =========================
+   FUNCIONES PRINCIPALES
+========================= */
+
+/**
+ * Cargar todos los posts desde la API
+ */
+
+async function cargarPosts() {
+  try {
+    mostrarCargando(listaPosts);
+
+    posts = await ApiService.getPosts(20);
+
+    postsFiltrados = [...posts];
+
+    renderizarPosts(postsFiltrados, listaPosts);
+
+    actualizarContador();
+
+  } catch (error) {
+    listaPosts.innerHTML = '';
+    listaPosts.appendChild(
+      MensajeError(`No se pudieron cargar los posts: ${error.message}`)
+    );
+  }
+}
+
+/**
+ * Actualizar el contador de posts
+ */
+function actualizarContador() {
+  contador.textContent = postsFiltrados.length;
+}
