@@ -235,3 +235,41 @@ async function guardarPost(datosPost) {
     btnSubmit.textContent = modoEdicion ? 'Actualizar Post' : 'Crear Post';
   }
 }
+
+/**
+ * Eliminar un post
+ * @param {number} id - ID del post a eliminar
+ */
+async function eliminarPost(id) {
+  // TODO 7.2.1: Usar confirm() para pedir confirmación. Si retorna false, salir de la función
+  //   if (!confirm(`¿Eliminar el post #${id}?`)) {
+  //     return;
+  //   }
+
+  try {
+    // TODO 7.2.2: Llamar a ApiService.deletePost(id) con await
+    //   await ApiService.deletePost(id);
+
+    // TODO 7.2.3: Filtrar el post eliminado del array posts
+    //   posts = posts.filter(p => p.id !== id);
+
+    // TODO 7.2.4: Filtrar el post eliminado del array postsFiltrados
+    //   postsFiltrados = postsFiltrados.filter(p => p.id !== id);
+
+    renderizarPosts(postsFiltrados, listaPosts);
+    actualizarContador();
+
+    mostrarMensajeTemporal(
+      mensajeEstado,
+      MensajeExito(`Post #${id} eliminado correctamente`),
+      3000
+    );
+
+  } catch (error) {
+    mostrarMensajeTemporal(
+      mensajeEstado,
+      MensajeError(`Error al eliminar: ${error.message}`),
+      5000
+    );
+  }
+}
