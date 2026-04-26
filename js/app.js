@@ -305,3 +305,67 @@ function limpiarBusqueda() {
   renderizarPosts(postsFiltrados, listaPosts);
   actualizarContador();
 }
+
+/* =========================
+   EVENT LISTENERS
+========================= */
+
+// Submit del formulario
+formPost.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const datosPost = {
+    title: inputTitulo.value.trim(),
+    body: inputContenido.value.trim(),
+    userId: 1
+  };
+
+  guardarPost(datosPost);
+});
+
+// Cancelar edición
+btnCancelar.addEventListener('click', () => {
+  limpiarFormulario();
+});
+
+// Buscar posts
+btnBuscar.addEventListener('click', () => {
+  buscarPosts(inputBuscar.value);
+});
+
+// Buscar con Enter
+inputBuscar.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    buscarPosts(inputBuscar.value);
+  }
+});
+
+// Limpiar búsqueda
+btnLimpiar.addEventListener('click', () => {
+  limpiarBusqueda();
+});
+
+// Delegación de eventos para editar y eliminar
+listaPosts.addEventListener('click', (e) => {
+  const action = e.target.dataset.action;
+  
+  if (!action) return;
+
+  const id = parseInt(e.target.dataset.id);
+  const post = posts.find(p => p.id === id);
+
+  if (action === 'editar' && post) {
+    activarModoEdicion(post);
+  }
+
+  if (action === 'eliminar') {
+    eliminarPost(id);
+  }
+});
+
+/* =========================
+   INICIALIZACIÓN
+========================= */
+
+// Cargar posts al iniciar
+cargarPosts();
