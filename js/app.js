@@ -189,13 +189,11 @@ async function guardarPost(datosPost) {
     let resultado;
 
     if (modoEdicion) {
-      // TODO 7.1.1: Obtener el ID del input oculto y convertirlo a número
-      //   const id = parseInt(inputPostId.value);
-
-      // TODO 7.1.2: Llamar a ApiService.updatePost(id, datosPost) y guardar en resultado
-      //   resultado = await ApiService.updatePost(id, datosPost);
       
-      // Actualizar en el array local
+      const id = parseInt(inputPostId.value);
+
+      resultado = await ApiService.updatePost(id, datosPost);
+
       const index = posts.findIndex(p => p.id === id);
       if (index !== -1) {
         posts[index] = { ...resultado, id };
@@ -208,11 +206,10 @@ async function guardarPost(datosPost) {
       );
 
     } else {
-      // TODO 7.1.3: Llamar a ApiService.createPost(datosPost) y guardar en resultado
-      //   resultado = await ApiService.createPost(datosPost);
       
-      // TODO 7.1.4: Agregar el resultado al INICIO del array posts usando unshift()
-      //   posts.unshift(resultado);
+      resultado = await ApiService.createPost(datosPost);
+
+      post.unshift(resultado);
 
       mostrarMensajeTemporal(
         mensajeEstado,
