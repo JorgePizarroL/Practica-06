@@ -242,19 +242,19 @@ async function guardarPost(datosPost) {
  */
 async function eliminarPost(id) {
   // TODO 7.2.1: Usar confirm() para pedir confirmación. Si retorna false, salir de la función
-  //   if (!confirm(`¿Eliminar el post #${id}?`)) {
-  //     return;
-  //   }
+     if (!confirm(`¿Eliminar el post #${id}?`)) {
+       return;
+     }
 
   try {
     // TODO 7.2.2: Llamar a ApiService.deletePost(id) con await
-    //   await ApiService.deletePost(id);
+      await ApiService.deletePost(id);
 
     // TODO 7.2.3: Filtrar el post eliminado del array posts
-    //   posts = posts.filter(p => p.id !== id);
+      posts = posts.filter(p => p.id !== id);
 
     // TODO 7.2.4: Filtrar el post eliminado del array postsFiltrados
-    //   postsFiltrados = postsFiltrados.filter(p => p.id !== id);
+      postsFiltrados = postsFiltrados.filter(p => p.id !== id);
 
     renderizarPosts(postsFiltrados, listaPosts);
     actualizarContador();
@@ -273,3 +273,4 @@ async function eliminarPost(id) {
     );
   }
 }
+
