@@ -134,11 +134,6 @@ function EstadoVacio() {
 }
 
 
-function mostrarCargando(contenedor) {
-  contenedor.innerHTML = '';
-  contenedor.appendChild(Spinner());
-}
-
 /**
  * Limpiar contenedor y renderizar lista de posts
  * @param {array} posts - Array de posts a renderizar
