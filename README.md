@@ -103,7 +103,7 @@ Aplicación web que consume la API de JSONPlaceholder para gestionar posts (CRUD
 ![Mensaje](assets/11-mensajeExito-renderizar.png)  
 **Descripción:** Se muestra un mensaje visual de éxito al crear, editar o eliminar un post. Además, se renderiza dinámicamente la lista actualizada.
 
----
+```
 
 ##  Estructura del proyecto
 
@@ -117,7 +117,7 @@ PRACTICA-06/
 │ └── components.js
 │── index.html
 
----
+```
 
 ## Buenas prácticas implementadas
 
