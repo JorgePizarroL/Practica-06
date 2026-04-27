@@ -1,10 +1,10 @@
-# 📝 Práctica 6 - Fetch API (Gestor de Posts)
+# Práctica 6 - Fetch API (Gestor de Posts)
 
 Aplicación web que consume la API de JSONPlaceholder para gestionar posts (CRUD), utilizando JavaScript moderno y manipulación del DOM sin usar innerHTML.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 -  Cargar posts desde API (GET)
 -  Crear nuevos posts (POST)
@@ -27,7 +27,7 @@ Aplicación web que consume la API de JSONPlaceholder para gestionar posts (CRUD
 
 ---
 
-## 📸 Evidencias de funcionamiento
+## Evidencias de funcionamiento
 
 ### 1. Datos cargados desde la API
 ![Lista](assets/01-lista.png)  
@@ -75,7 +75,7 @@ Aplicación web que consume la API de JSONPlaceholder para gestionar posts (CRUD
 
 ---
 
-## 💻 Evidencias de código
+## Evidencias de código
 
 ### 8. API Service (Fetch API)
 ![API](assets/08-get-create-update-delete.png)  
