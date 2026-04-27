@@ -40,7 +40,7 @@ let modoEdicion = false;
 async function cargarPosts() {
   try {
     mostrarCargando(listaPosts);
-
+   
     posts = await ApiService.getPosts(20);
 
     postsFiltrados = [...posts];
@@ -123,7 +123,7 @@ async function guardarPost(datosPost) {
     } else {
       
       resultado = await ApiService.createPost(datosPost);
-
+      console.log('Mensaje éxito:', resultado); // 👈 AQUÍ
       posts.unshift(resultado);
 
       mostrarMensajeTemporal(
